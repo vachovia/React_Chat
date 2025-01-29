@@ -28,3 +28,7 @@ module.exports = {
 
 // installed bcrypt to hash passwords
 // we undo seed Users table to bcrypt password and seed again
+
+// const secret = require('crypto').randomBytes(64).toString('hex');
+// inside authController.js hgenerated and returned by res.send(secret)
+// to use it in .env file as an APP_KEY
