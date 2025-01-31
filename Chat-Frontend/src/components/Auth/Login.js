@@ -4,15 +4,15 @@ import {Link} from 'react-router-dom';
 import {useState} from 'react';
 
 const Login = () => {
-    const [a, setA] = useState({
-      email: "",
-      password: ""
-    });
+     const [formData, setFormData] = useState({
+       email: "",
+       password: "",
+     });
 
-    const {email, password} = a;
+    const { email, password } = formData;
 
     const onChange = (e) => {
-      setA({ ...a, [e.target.name]: e.target.value });
+      setFormData({ ...formData, [e.target.name]: e.target.value });
     };
 
     const handleSubmit = (e) => {
