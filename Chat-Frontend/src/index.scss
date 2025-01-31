@@ -1,31 +1,37 @@
 @import "./assets//scss/variables";
 
-/* navbar */
-header nav {
-  display: flex;
-  gap: 16px;
-  justify-content: end;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-header nav h1 {
-  margin-right: auto;
-  border-bottom: 3px solid var(--primary);
-}
-header nav a{
-  text-decoration: none;
-  padding: 6px;
-  border-radius: 4px;
-}
-header nav a.active {
-  background: var(--primary);
+:root {
+  --primary: #bc4123;
+  --secondary: #2b3452;
 }
 
 /* page content */
 main {
   min-height: 100vh;
   background-color: $bg-main;
-} 
+}
+
+/* navbar */
+header nav {
+  display: flex;
+  gap: 16px;
+  justify-content: start;
+  align-items: center;
+  background-color: var(--secondary);
+  color: #fafafa
+}
+header nav h2 {
+  color: $success;
+}
+header nav a{
+  text-decoration: none;
+  padding: 6px;
+  border-radius: 4px;
+  color: #fafafa
+}
+header nav a.active {
+  color: lightcoral;
+}
 
 /* breadcrumbs */
 .breadcrumbs {
