@@ -1,8 +1,13 @@
 import registerImage from "./../../assets/images/register.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import { registerAction } from "./../../redux/slice/auth/actions";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -19,9 +24,20 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Handle register logic here
+    dispatch(registerAction(formData));
   };
+
+  const { loading, error, user } = useSelector((state) => {
+    return state.auth;
+  });
+
+  const token = user?.token;
+
+  useEffect(() => {
+    if (token) {
+      navigate("/login");
+    }
+  }, [token, navigate]);
 
   return (
     <div id="auth-container" className="container pt-5">
@@ -105,6 +121,10 @@ const Register = () => {
                 </button>
               </div>
             </form>
+            <div className="h-50 fst-italic d-flex justify-content-center align-items-center">
+              {error && <h2 className="text-danger">{error.message}</h2>}
+              {loading && <h2 className="text-danger">Submitting...</h2>}
+            </div>
           </div>
         </div>
       </div>

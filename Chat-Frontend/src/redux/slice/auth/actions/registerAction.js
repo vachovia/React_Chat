@@ -1,23 +1,11 @@
-import axios from "axios";
-import baseURL from "../../../../utils/baseURL";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import AuthService from "./../../../../services/authService";
 
 const registerUserAction = createAsyncThunk(
-  "users/register",
+  "auth/register",
   async (payload, { rejectWithValue, getState, dispatch }) => {
     try {
-      const url = `${baseURL}/users/register`;
-      const config = {
-        headers: { "Content-Type": "application/json" },
-      };
-      const { fullname, email, password } = payload;
-      const body = {
-        fullname,
-        email,
-        password,
-      };
-      const res = await axios.post(url, body, config);
-      return res.data;
+      return await AuthService.register(payload);
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);

@@ -13,11 +13,19 @@ const AuthService = {
     },
 
     register: (data) => {
-       return API.post("/register", data).then().catch();
+       return API.post("/register", data)
+         .then(({ data }) => {
+             API.defaults.headers["Authorization"] = `Bearer ${data.token}`;
+           return data;
+         })
+         .catch((error) => {
+           console.log("Auth Service Error: ", error);
+           throw error;
+         });
     },
 
-    logout: async () => {
-        
+    logout: () => {
+        return null;
     }
 };
 

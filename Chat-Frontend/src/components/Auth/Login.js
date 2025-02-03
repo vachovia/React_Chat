@@ -3,7 +3,7 @@ import loginImage from "./../../assets/images/login.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import {loginAction} from "./../../redux/slice/auth/actions";
+import { loginAction } from "./../../redux/slice/auth/actions";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -29,15 +29,13 @@ const Login = () => {
     return state.auth;
   });
 
-  console.log(loading, error, user);
-
-  const token = user?.token;
+  const isLoggedIn = user?.isLoggedIn;
 
   useEffect(() => {
-    if (token) {
+    if (isLoggedIn) {
       navigate("/");
     }
-  }, [token, navigate]);
+  }, [isLoggedIn, navigate]);
 
   return (
     <div id="auth-container" className="container pt-5">
@@ -81,11 +79,19 @@ const Login = () => {
                     Register
                   </Link>
                 </p>
-                <button className="btn btn-primary" type="submit">
+                <button
+                  className="btn btn-primary"
+                  type="submit"
+                  disabled={loading}
+                >
                   Login
                 </button>
               </div>
             </form>
+            <div className="h-50 fst-italic d-flex justify-content-center align-items-center">
+              {error && <h2 className="text-danger">{error.message}</h2>}
+              {loading && <h2 className="text-danger">Submitting...</h2>}
+            </div>
           </div>
         </div>
       </div>
