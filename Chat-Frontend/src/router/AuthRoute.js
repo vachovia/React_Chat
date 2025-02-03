@@ -1,4 +1,3 @@
-import React from "react";
 import { useSelector } from "react-redux";
 
 const AuthRoute = ({ children }) => {
@@ -7,7 +6,7 @@ const AuthRoute = ({ children }) => {
   });
 
   if (!isLoggedIn) {
-    window.location.href = "/login";
+    window.location.href = "/login"; 
     return null;
   }
   return <div>{children}</div>;
