@@ -1,4 +1,5 @@
 import registerImage from "./../../assets/images/register.svg";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 
 const Register = () => {
@@ -30,7 +31,7 @@ const Register = () => {
             <img src={registerImage} alt="Register" className="img-fluid" />
           </div>
           <div id="form-section" className="col-md-6">
-            <h2 className="text-center pb-4">Register</h2>
+            <h2 className="text-center pb-4">Create an account</h2>
             <form onSubmit={handleSubmit}>
               <div className="form-group mb-4">
                 <input
@@ -65,7 +66,6 @@ const Register = () => {
                   <option value="">Select Gender</option>
                   <option value="male">Male</option>
                   <option value="female">Female</option>
-                  <option value="other">Other</option>
                 </select>
               </div>
               <div className="form-group mb-4">
@@ -90,7 +90,16 @@ const Register = () => {
                   required
                 />
               </div>
-              <div className="d-flex aling-items-center justify-content-end">
+              <div className="d-flex aling-items-center justify-content-between">
+                <p className="px-1 fst-italic">
+                  Already have an account?{" "}
+                  <Link
+                    to="/login"
+                    className="text-decoration-none text-success"
+                  >
+                    Login
+                  </Link>
+                </p>
                 <button className="btn btn-primary" type="submit">
                   Register
                 </button>

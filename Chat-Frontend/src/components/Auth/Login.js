@@ -1,9 +1,14 @@
 // import './../../assets/scss/Auth/Auth.scss';
 import loginImage from "./../../assets/images/login.svg";
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect, useState } from "react";
+import {loginAction} from "./../../redux/slice/auth/actions";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -17,9 +22,22 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
-    // Handle login logic here
+    dispatch(loginAction(formData));
   };
+
+  const { loading, error, user } = useSelector((state) => {
+    return state.auth;
+  });
+
+  console.log(loading, error, user);
+
+  const token = user?.token;
+
+  useEffect(() => {
+    if (token) {
+      navigate("/");
+    }
+  }, [token, navigate]);
 
   return (
     <div id="auth-container" className="container pt-5">
@@ -54,11 +72,11 @@ const Login = () => {
                 />
               </div>
               <div className="d-flex aling-items-center justify-content-between">
-                <p className="px-1">
+                <p className="px-1 fst-italic">
                   Don't have an account?{" "}
                   <Link
                     to="/register"
-                    className="text-decoration-none text-danger"
+                    className="text-decoration-none text-primary"
                   >
                     Register
                   </Link>

@@ -7,8 +7,8 @@
 
 /* page content */
 main {
-  min-height: 100vh;
-  background-color: $bg-main;
+  min-height: 95vh;
+  background-color: $bg-gray; // $bg-main;
 }
 
 /* navbar */
@@ -21,7 +21,7 @@ header nav {
   color: #fafafa
 }
 header nav h2 {
-  color: $success;
+  color: $bg-gray; // $success;
 }
 header nav a{
   text-decoration: none;

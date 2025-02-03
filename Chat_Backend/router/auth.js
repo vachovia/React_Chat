@@ -1,8 +1,8 @@
 const router = require("express").Router();
 
 const {
-  loginController,
-  registerController,
+  login: loginController,
+  register: registerController,
 } = require("./../controllers/authController");
 
 const { validate } = require("./../validators");

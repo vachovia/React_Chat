@@ -7,7 +7,7 @@ exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
     // find user
-    const user = await User.create({
+    const user = await User.findOne({
       where: {
         email,
       },
@@ -58,6 +58,7 @@ exports.register = async (req, res) => {
 };
 
 const generateToken = (user) => {
+  delete user.password;
   const token = jwt.sign(user, config.appKey, { expiresIn: 86400 });
   return { ...user, ...{ token } };
 };
