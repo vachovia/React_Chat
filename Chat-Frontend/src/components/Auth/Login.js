@@ -25,11 +25,9 @@ const Login = () => {
     dispatch(loginAction(formData));
   };
 
-  const { loading, error, user } = useSelector((state) => {
+  const { loading, error, isLoggedIn } = useSelector((state) => {
     return state.auth;
   });
-
-  const isLoggedIn = user?.isLoggedIn;
 
   useEffect(() => {
     if (isLoggedIn) {

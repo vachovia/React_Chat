@@ -27,11 +27,9 @@ const Register = () => {
     dispatch(registerAction(formData));
   };
 
-  const { loading, error, user } = useSelector((state) => {
+  const { loading, error, token } = useSelector((state) => {
     return state.auth;
   });
-
-  const token = user?.token;
 
   useEffect(() => {
     if (token) {

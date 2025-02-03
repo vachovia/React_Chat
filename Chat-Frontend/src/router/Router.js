@@ -4,6 +4,8 @@ import {
   Route
 } from "react-router-dom";
 
+import AuthRoute from "./AuthRoute";
+
 import { RootLayout } from "./../components/Layout";
 import { Login, Register } from "./../components/Auth";
 import { Chat } from "./../components/Chat";
@@ -12,7 +14,14 @@ import { NotFound } from "./../pages";
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
-      <Route index element={<Chat />} />
+      <Route
+        index
+        element={
+          <AuthRoute>
+            <Chat />
+          </AuthRoute>
+        }
+      />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
 
@@ -25,7 +34,7 @@ const router = createBrowserRouter(
         <Route index element={<Careers />} />
         <Route path=":id" element={<CareerDetails />} />
       </Route> */}
-
+      
       <Route path="*" element={<NotFound />} />
     </Route>
   )
