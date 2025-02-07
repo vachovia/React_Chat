@@ -32,7 +32,7 @@ exports.login = async (req, res) => {
     // generate jwt - user is sequelize object and not flat
     const rawUser = user.get({ raw: true });
     const userWithToken = generateToken(rawUser);
-    userWithToken.avatar = user.avatar;
+    userWithToken.user.avatar = user.avatar;
 
     res.send(userWithToken);
   } catch (e) {
@@ -61,5 +61,5 @@ exports.register = async (req, res) => {
 const generateToken = (user) => {
   delete user.password;
   const token = jwt.sign(user, config.appKey, { expiresIn: 86400 });
-  return { ...user, ...{ token } };
+  return { ...{ user }, ...{ token } };
 };

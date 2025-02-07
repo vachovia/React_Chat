@@ -1,12 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { registerAction, loginAction, logoutAction } from "./actions";
+import { jsonTryParse } from "./../../../utils";
+
+const user = jsonTryParse(localStorage.getItem("user"));
+const token = jsonTryParse(localStorage.getItem("token")) || "";
 
 const initialState = {
-  user: null,
-  token: "",
+  user: user,
+  token: token,
   error: null,
   loading: false,
-  isLoggedIn: false,
+  isLoggedIn: !!user,
 };
 
 const authSlice = createSlice({
@@ -23,7 +27,7 @@ const authSlice = createSlice({
     builder.addCase(registerAction.fulfilled, (state, action) => {
       state.loading = false;
       state.isLoggedIn = false;
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.token = action.payload.token;
     });
     builder.addCase(registerAction.rejected, (state, action) => {
@@ -40,7 +44,7 @@ const authSlice = createSlice({
     builder.addCase(loginAction.fulfilled, (state, action) => {
       state.loading = false;
       state.isLoggedIn = true;
-      state.user = action.payload;
+      state.user = action.payload.user;
       state.token = action.payload.token;
     });
     builder.addCase(loginAction.rejected, (state, action) => {
@@ -51,7 +55,7 @@ const authSlice = createSlice({
       state.error = action.payload;
     });
     // Logout
-    builder.addCase(logoutAction.fulfilled, (state, action) => {
+    builder.addCase(logoutAction.fulfilled, (state) => {
       state.loading = false;
       state.user = null;
       state.token = "";
