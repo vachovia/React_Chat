@@ -15,7 +15,7 @@ exports.login = async (req, res) => {
 
     //check if user found
     if (!user) {
-      res.status(404).json({
+      return res.status(404).json({
         message: "User not found!",
       });
     }
@@ -24,7 +24,7 @@ exports.login = async (req, res) => {
     const isValidPassword = bcrypt.compareSync(password, user.password);
 
     if (!isValidPassword) {
-      res.status(401).json({
+      return res.status(401).json({
         message: "Incorrect password!",
       });
     }
@@ -32,6 +32,7 @@ exports.login = async (req, res) => {
     // generate jwt - user is sequelize object and not flat
     const rawUser = user.get({ raw: true });
     const userWithToken = generateToken(rawUser);
+    userWithToken.avatar = user.avatar;
 
     res.send(userWithToken);
   } catch (e) {

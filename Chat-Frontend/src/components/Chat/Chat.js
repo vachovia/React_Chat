@@ -1,5 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import { Navbar } from "./../Layout";
+import './../../assets/scss/Chat/Chat.scss';
 
 const Chat = () => {
   const { user } = useSelector((state) => {
@@ -7,13 +9,9 @@ const Chat = () => {
   });
 
   return (
-    <div className="text-center">
-      <h2>Chat Screen</h2>
-      {user && (
-        <p>
-          Welcome, {user?.firstName} {user?.lastName}
-        </p>
-      )}
+    <div id="chat-container">
+      <Navbar />
+      <div id="chat-wrap">Data</div>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@import '../../../../assets/scss/variables';
+@import './../_variables';
 
 #navbar {
     display: flex;
@@ -28,8 +28,9 @@
 
         p {
             display: flex;
-            align-self: center;
+            align-items: center;
             color: white;
+            margin: 0;
         }
 
         img {
