@@ -1,4 +1,4 @@
-@import '../../assets/scss/variables';
+@import './../variables';
 
 .modal-mask {
     position: fixed;
@@ -29,6 +29,9 @@
                 border-top-left-radius: 10px;
                 border-top-right-radius: 10px;
                 text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
             }
 
             .modal-body {
