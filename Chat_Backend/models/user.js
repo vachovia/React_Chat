@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const bcrypt = require("bcrypt");
 const { Model } = require("sequelize");
@@ -27,11 +27,13 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         get() {
           const avatar = this.getDataValue("avatar");
-          const url = `${config.appUrl}:${config.appPort}`;          
-          if(!avatar){
+          const url = `${config.appUrl}:${config.appPort}`;
+          if (!avatar) {
             return `${url}/${this.getDataValue("gender")}.svg`;
           }
-        }
+          const id = this.getDataValue("id");
+          return `${url}/uploads/user/${id}/${avatar}`;
+        },
       },
     },
     {
@@ -47,9 +49,9 @@ module.exports = (sequelize, DataTypes) => {
 };
 
 const hashPassword = async (user) => {
-  const isPasswordChanged = user.changed('password');
-  if(isPasswordChanged){
+  const isPasswordChanged = user.changed("password");
+  if (isPasswordChanged) {
     user.password = await bcrypt.hash(user.password, 10);
   }
   return user;
-}
+};

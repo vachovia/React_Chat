@@ -2,6 +2,9 @@ const User = require("./../models").User;
 const sequelize = require("sequelize");
 
 module.exports.update = async (req, res) => {
+  if(req.file){
+    req.body.avatar = req.file.filename;
+  }
   try {
     // getting user from middleware's token
     const id = req.user.id;
