@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment, useState } from "react";
 import logoutAction from "./../../redux/slice/auth/actions/logoutAction";
 import { Modal } from "./../Modal";
-import { registerAction } from "./../../redux/slice/auth/actions";
+import { updateProfileAction } from "./../../redux/slice/auth/actions";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -41,7 +41,8 @@ const Navbar = () => {
     for (const key in data) {
       profileFormData.append(key, data[key]);
     }
-    // dispatch();
+    dispatch(updateProfileAction(profileFormData));
+    setShowProfileModal(false);
   };
 
   const handleLogout = () => {
@@ -57,7 +58,7 @@ const Navbar = () => {
         id="profile-menu"
         onClick={() => setShowProfileOptions(!showProfileOptions)}
       >
-        <img width="40" height="40" src={user.avatar} alt="Avatar" />
+        <img width="40" height="40" src={user?.avatar} alt="Avatar" />
         {user && (
           <p className="px-4">
             {user.firstName} {user.lastName}

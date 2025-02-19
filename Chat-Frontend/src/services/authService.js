@@ -12,7 +12,6 @@ const AuthService = {
         throw error;
       });
   },
-
   register: (data) => {
     return API.post("/register", data)
       .then(({ data }) => {
@@ -24,7 +23,17 @@ const AuthService = {
         throw error;
       });
   },
-
+  updateProfile: (data) => {
+    return API.post("/users/update", data)
+      .then(({ data }) => {
+        localStorage.setItem("user", JSON.stringify(data));
+        return data;
+      })
+      .catch((error) => {
+        console.log("Auth Service Error: ", error);
+        throw error;
+      });
+  },
   logout: () => {
     API.defaults.headers["Authorization"] = "";
     localStorage.removeItem("user");

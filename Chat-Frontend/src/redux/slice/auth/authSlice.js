@@ -1,5 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { registerAction, loginAction, logoutAction } from "./actions";
+import {
+  registerAction,
+  loginAction,
+  updateProfileAction,
+  logoutAction,
+} from "./actions";
 import { jsonTryParse } from "./../../../utils";
 
 const user = jsonTryParse(localStorage.getItem("user"));
@@ -52,6 +57,20 @@ const authSlice = createSlice({
       state.user = null;
       state.token = "";
       state.isLoggedIn = false;
+      state.error = action.payload;
+    });
+    // Update Profile
+    builder.addCase(updateProfileAction.pending, (state, action) => {
+      state.loading = true;
+    });
+    builder.addCase(updateProfileAction.fulfilled, (state, action) => {
+      state.loading = false;
+      state.isLoggedIn = false;
+      state.user = action.payload.user;
+    });
+    builder.addCase(updateProfileAction.rejected, (state, action) => {
+      state.loading = false;
+      state.user = null;
       state.error = action.payload;
     });
     // Logout
