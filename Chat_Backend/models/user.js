@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
             return `${url}/${gender}.svg`;
           }
           const id = this.getDataValue("id");
-          return `${url}/uploads/user/${id}/${avatar}`;
+          return `${url}/user/${id}/${avatar}`;
         },
       },
     },

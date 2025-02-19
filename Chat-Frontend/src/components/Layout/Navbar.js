@@ -41,7 +41,9 @@ const Navbar = () => {
     for (const key in data) {
       profileFormData.append(key, data[key]);
     }
+
     dispatch(updateProfileAction(profileFormData));
+
     setShowProfileModal(false);
   };
 

@@ -24,7 +24,14 @@ const AuthService = {
       });
   },
   updateProfile: (data) => {
-    return API.post("/users/update", data)
+    const token = localStorage.getItem("token") || "";
+    const headers = {
+      headers: {
+        "Authorization": `Bearer ${token}`,
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+    };
+    return API.post("/users/update", data, headers)
       .then(({ data }) => {
         localStorage.setItem("user", JSON.stringify(data));
         return data;

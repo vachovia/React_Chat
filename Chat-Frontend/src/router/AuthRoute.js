@@ -4,9 +4,9 @@ const AuthRoute = ({ children }) => {
   const { isLoggedIn } = useSelector((state) => {
     return state.auth;
   });
-
-  if (!isLoggedIn) {
-    window.location.href = "/login"; 
+  
+  if (!isLoggedIn) {    
+    window.location.href = "/login";
     return null;
   }
   return <div>{children}</div>;

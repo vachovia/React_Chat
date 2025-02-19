@@ -65,8 +65,7 @@ const authSlice = createSlice({
     });
     builder.addCase(updateProfileAction.fulfilled, (state, action) => {
       state.loading = false;
-      state.isLoggedIn = false;
-      state.user = action.payload.user;
+      state.user = action.payload;
     });
     builder.addCase(updateProfileAction.rejected, (state, action) => {
       state.loading = false;
