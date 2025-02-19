@@ -5,6 +5,11 @@ module.exports.update = async (req, res) => {
   if(req.file){
     req.body.avatar = req.file.filename;
   }
+
+  if (typeof req.body.avatar !== "undefined" && req.body.avatar.length === 0) {
+    delete req.body.avatar;
+  }
+
   try {
     // getting user from middleware's token
     const id = req.user.id;
@@ -12,8 +17,8 @@ module.exports.update = async (req, res) => {
     // so why we specified individualHooks: true
     const [rows, result] = await User.update(req.body, {
       where: { id },
-      returning: true, // number of rows affected by update and the updated rows
-      individualHooks: true,
+      returning: true, // number of rows affected by update and the updated rows (result)
+      individualHooks: true, 
     });
 
     const user = result[0].get({ raw: true });
