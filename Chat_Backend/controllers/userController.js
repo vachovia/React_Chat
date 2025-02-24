@@ -25,7 +25,7 @@ module.exports.update = async (req, res) => {
     user.avatar = result[0].avatar;
     delete user.password;
 
-    res.send(user);
+    return res.send(user);
   } catch (e) {
     return res.status(500).send({ error: e.message });
   }

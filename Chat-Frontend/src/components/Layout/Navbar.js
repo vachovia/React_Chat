@@ -2,9 +2,11 @@ import "./../../assets/scss/Chat/Navbar.scss";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Fragment, useState } from "react";
-import logoutAction from "./../../redux/slice/auth/actions/logoutAction";
 import { Modal } from "./../Modal";
-import { updateProfileAction } from "./../../redux/slice/auth/actions";
+import {
+  updateProfileAction,
+  logoutAction,
+} from "./../../redux/slice/auth/actions";
 
 const Navbar = () => {
   const dispatch = useDispatch();
@@ -42,9 +44,9 @@ const Navbar = () => {
       profileFormData.append(key, data[key]);
     }
 
-    dispatch(updateProfileAction(profileFormData));
-
-    setShowProfileModal(false);
+    dispatch(updateProfileAction(profileFormData)).then(() =>
+      setShowProfileModal(false)
+    );
   };
 
   const handleLogout = () => {

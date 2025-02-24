@@ -24,10 +24,8 @@ const AuthService = {
       });
   },
   updateProfile: (data) => {
-    const token = localStorage.getItem("token") || "";
     const headers = {
       headers: {
-        "Authorization": `Bearer ${token}`,
         "Content-Type": "application/x-www-form-urlencoded"
       },
     };

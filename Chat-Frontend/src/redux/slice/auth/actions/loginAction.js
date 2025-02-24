@@ -4,7 +4,7 @@ import AuthService from "./../../../../services/authService";
 const loginAction = createAsyncThunk(
   "auth/login",
   async (payload, { rejectWithValue, getState, dispatch }) => {
-    try {      
+    try {
       return await AuthService.login(payload);
     } catch (error) {
       console.log(error.response.data);

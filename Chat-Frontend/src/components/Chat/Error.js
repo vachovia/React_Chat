@@ -16,7 +16,7 @@ const Error = (props) => {
     <>
       {errors.map((err, idx) => {
         return (
-          <div className="d-flex justify-content-center align-content-center">
+          <div className="d-flex justify-content-center align-content-center" key={idx}>
             <h4 className="text-danger">
               {err.path} {": "} {err.msg}
             </h4>
