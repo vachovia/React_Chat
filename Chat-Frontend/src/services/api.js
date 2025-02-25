@@ -34,7 +34,6 @@ export const setUserStorage = (user) => {
 
 export const setTokenStorage = (token) => {
   localStorage.setItem("token", token);
-  API.defaults.headers["Authorization"] = `Bearer ${token}`;
 };
 
 export const setAuthorizationHeader = (token) => {
