@@ -1,11 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "./../../../../services/authService";
+import API, { setHeadersAndStorage } from "./../../../../services/api";
 
 const registerUserAction = createAsyncThunk(
   "auth/register",
   async (payload, { rejectWithValue, getState, dispatch }) => {
     try {
-      return await AuthService.register(payload);
+      const { data } = await API.post("/register", payload);
+      setHeadersAndStorage(data);
+      return data;
     } catch (error) {
       console.log(error.response.data);
       return rejectWithValue(error.response.data);

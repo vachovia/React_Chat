@@ -1,8 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import AuthService from "./../../../../services/authService";
+import { clearHeadersAndStorage } from "./../../../../services/api";
 
 const logoutAction = createAsyncThunk("auth/logout", () => {
-  AuthService.logout();
+  clearHeadersAndStorage();
   return null;
 });
 

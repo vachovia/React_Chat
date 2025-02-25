@@ -27,4 +27,29 @@ API.interceptors.response.use(
   }
 );
 
+export const setUserStorage = (user) => {
+  localStorage.setItem("user", JSON.stringify(user));
+};
+
+export const setTokenStorage = (token) => {
+  localStorage.setItem("token", token);
+  API.defaults.headers["Authorization"] = `Bearer ${token}`;
+};
+
+export const setAuthorizationHeader = (token) => {
+  API.defaults.headers["Authorization"] = `Bearer ${token}`;
+};
+
+export const setHeadersAndStorage = ({ user, token }) => {
+  setUserStorage(user);
+  setTokenStorage(token);
+  setAuthorizationHeader(token);
+};
+
+export const clearHeadersAndStorage = () => {
+  localStorage.removeItem("user");
+  localStorage.removeItem("token");
+  API.defaults.headers["Authorization"] = "";
+};
+
 export default API;

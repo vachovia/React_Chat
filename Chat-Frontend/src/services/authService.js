@@ -1,4 +1,4 @@
-import API from "./api";
+import API, { setHeadersAndStorage } from "./api";
 
 const AuthService = {
   login: (data) => {
@@ -46,10 +46,6 @@ const AuthService = {
   },
 };
 
-const setHeadersAndStorage = ({ user, token }) => {
-  API.defaults.headers["Authorization"] = `Bearer ${token}`;
-  localStorage.setItem("user", JSON.stringify(user));
-  localStorage.setItem("token", token);
-};
-
 export default AuthService;
+
+/*This file is out of use*/

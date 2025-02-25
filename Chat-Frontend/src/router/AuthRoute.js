@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
@@ -6,11 +7,13 @@ const AuthRoute = ({ children }) => {
   const { isLoggedIn } = useSelector((state) => {
     return state.auth;
   });
-  
-  if (!isLoggedIn) {
-    navigate("/login");
-    return null;
-  }
+
+  useEffect(() => {
+    if (!isLoggedIn) {
+      navigate("/login");
+    }
+  }, [isLoggedIn, navigate]);
+
   return <div>{children}</div>;
 };
 
