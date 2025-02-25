@@ -34,6 +34,7 @@ const authSlice = createSlice({
       state.isLoggedIn = false;
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.error = null;
     });
     builder.addCase(registerAction.rejected, (state, action) => {
       state.loading = false;
@@ -51,6 +52,7 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.user = action.payload.user;
       state.token = action.payload.token;
+      state.error = null;
     });
     builder.addCase(loginAction.rejected, (state, action) => {
       state.loading = false;
@@ -78,7 +80,7 @@ const authSlice = createSlice({
       state.user = null;
       state.token = "";
       state.isLoggedIn = false;
-      state.error = null;
+      // state.error = null;
     });
   },
 });

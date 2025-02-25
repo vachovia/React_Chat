@@ -50,7 +50,9 @@ const Navbar = () => {
   };
 
   const handleLogout = () => {
-    dispatch(logoutAction());
+    dispatch(logoutAction()).then(() => {
+      window.location.href = "/login";
+    });
     // Logs out automatically because user
     // becomes null=> router/AuthRoute.js
   };

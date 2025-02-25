@@ -12,11 +12,12 @@ module.exports.auth = (req, res, next) => {
         });
     }
 
-    jwt.verify(token, config.appKey, (err, user) => {
-        if(err) {
-            return res.status(403).json({
-                error: "Access denied! Invalid token",
-            });
+    jwt.verify(token, config.appKey, (error, user) => {
+        if (error) {
+          return res.status(403).json({
+            error,
+            message: "Access denied! Invalid token",
+          });
         }
 
         req.user = user;

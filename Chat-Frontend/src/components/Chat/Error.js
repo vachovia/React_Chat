@@ -18,7 +18,7 @@ const Error = (props) => {
         return (
           <div className="d-flex justify-content-center align-content-center" key={idx}>
             <h4 className="text-danger">
-              {err.path} {": "} {err.msg}
+              {err.path ? <>{err.path} {": "} {err.msg}</> : <>{err.msg}</>}
             </h4>
           </div>
         );

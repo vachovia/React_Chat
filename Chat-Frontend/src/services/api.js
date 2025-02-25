@@ -5,9 +5,9 @@ const token = localStorage.getItem("token") || "";
 const API = axios.create({
   baseURL,
   headers: {
-    Accept: "application/json",
+    "Accept": "application/json",
     "Content-type": "application/json",
-    Authorization: `Bearer ${token}`,
+    "Authorization": `Bearer ${token}`,
   },
 });
 
@@ -15,16 +15,12 @@ API.interceptors.response.use(
   (res) => {
     return res;
   },
-  (err) => {
-    console.log(err);
-    
-    if (err.response.status !== 401) {
+  (err) => {    
+    if (err.response.status !== 403) {
       throw err;
     }
-
     if (typeof err.response.data.error.name !== "undefined") {
       if (err.response.data.error.name === "TokenExpiredError") {
-        // store.dispatch(logout());
         throw err;
       }
     }
