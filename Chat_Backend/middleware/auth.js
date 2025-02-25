@@ -14,9 +14,9 @@ module.exports.auth = (req, res, next) => {
 
     jwt.verify(token, config.appKey, (error, user) => {
         if (error) {
+          const message = "Access denied! Invalid token.";
           return res.status(403).json({
-            error,
-            message: "Access denied! Invalid token",
+            error, message
           });
         }
 

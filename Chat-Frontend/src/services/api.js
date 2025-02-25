@@ -21,6 +21,7 @@ API.interceptors.response.use(
     }
     if (typeof err.response.data.error.name !== "undefined") {
       if (err.response.data.error.name === "TokenExpiredError") {
+        clearHeadersAndStorage();
         throw err;
       }
     }

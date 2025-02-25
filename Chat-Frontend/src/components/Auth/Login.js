@@ -86,9 +86,17 @@ const Login = () => {
                 </button>
               </div>
             </form>
-            <div className="h-50 fst-italic d-flex justify-content-center align-items-center">
-              {error && <h2 className="text-danger">{error.message}</h2>}
-              {loading && <h2 className="text-danger">Submitting...</h2>}
+            <div className="h-50 fst-italic  text-center mt-4">
+              {error && (
+                <div className="d-block">
+                  <h2 className="text-danger">{error.message}</h2>
+                </div>
+              )}
+              {loading && (
+                <div className="d-block">
+                  <h2 className="text-danger">Submitting...</h2>
+                </div>
+              )}
             </div>
           </div>
         </div>

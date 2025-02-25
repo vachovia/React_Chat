@@ -71,7 +71,6 @@ const authSlice = createSlice({
     });
     builder.addCase(updateProfileAction.rejected, (state, action) => {
       state.loading = false;
-      state.user = null;
       state.error = action.payload;
     });
     // Logout
