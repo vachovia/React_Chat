@@ -3,8 +3,8 @@
 const models = require("./../../models");
 const User = models.User;
 const Chat = models.Chat;
-const ChatUser = models.ChatUser;
 const Message = models.Message;
+const ChatUser = models.ChatUser;
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
