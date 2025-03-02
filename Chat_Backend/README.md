@@ -28,3 +28,6 @@
 
 // creates model Message and creates migration file
 // npx sequelize model:create --name Message --attributes type:string,message:text,chatId:integer,fromUserId:integer
+
+// to create dummy seeder file users we need to run command: npx sequelize seed:create --name chats
+// to seed particular seed file we need to run command: npx sequelize db:seed --seed 20250302230657-chats
