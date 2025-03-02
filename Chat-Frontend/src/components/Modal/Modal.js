@@ -1,6 +1,7 @@
 import "./../../assets/scss/Chat/Modal.scss";
 
 const Modal = (props) => {
+  
   const findByKey = (key) => {
     return props.children.map((child) => {
       if (child.key === key) {
