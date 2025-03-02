@@ -19,3 +19,12 @@
 // const secret = require('crypto').randomBytes(64).toString('hex');
 // inside authController.js generated and returned by res.send(secret)
 // to use it in .env file as an APP_KEY
+
+// creates model Chat and creates migration file
+// npx sequelize model:create --name Chat --attributes type:string
+
+// creates model ChatUser and creates migration file
+// npx sequelize model:create --name ChatUser --attributes chatId:integer,userId:integer
+
+// creates model Message and creates migration file
+// npx sequelize model:create --name Message --attributes type:string,message:text,chatId:integer,fromUserId:integer
