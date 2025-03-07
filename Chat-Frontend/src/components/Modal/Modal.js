@@ -7,6 +7,7 @@ const Modal = (props) => {
       if (child.key === key) {
         return child;
       }
+      return false;
     });
   };
 

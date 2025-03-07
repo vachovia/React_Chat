@@ -6,4 +6,8 @@ const jsonTryParse = function (jsonString) {
   }
 };
 
-export { jsonTryParse };
+const userStatus = (user) => {
+  return user.status === 'online' ? 'online' : 'offline';
+}
+
+export { jsonTryParse, userStatus };
