@@ -21,7 +21,7 @@ const FriendList = () => {
         <h3 className="m-0">Friends</h3>
         <button>Add</button>
       </div>
-      <hr style={{'border': 'none', 'borderBottom': '2px solid #999'}} />
+      <hr className="app-hr" />
       <Error error={error} />
       {loading && (
         <div className="d-flex justify-content-center align-content-center">

@@ -18,16 +18,16 @@ header nav {
   justify-content: start;
   align-items: center;
   background-color: var(--secondary);
-  color: #fafafa
+  color: #fafafa;
 }
 header nav h2 {
   color: $bg-gray; // $success;
 }
-header nav a{
+header nav a {
   text-decoration: none;
   padding: 6px;
   border-radius: 4px;
-  color: #fafafa
+  color: #fafafa;
 }
 header nav a.active {
   color: lightgreen;
@@ -38,12 +38,12 @@ header nav a.active {
   max-width: 1200px;
   margin: 20px auto;
 }
-.breadcrumbs > *{
+.breadcrumbs > * {
   display: inline-block;
   margin-right: 10px;
 }
 .breadcrumbs .crumb:after {
-  content: '>';
+  content: ">";
   margin-left: 10px;
 }
 .breadcrumbs .crumb:last-child:after {
@@ -51,4 +51,8 @@ header nav a.active {
 }
 .breadcrumbs .crumb a {
   color: #ddd;
+}
+.app-hr {
+  border: none;
+  border-bottom: 1px solid #777;
 }
