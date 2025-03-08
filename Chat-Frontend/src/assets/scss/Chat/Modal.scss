@@ -26,8 +26,6 @@
                 background-color: $bg-main;
                 padding: 10px;
                 color: white;
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
                 text-align: center;
                 display: flex;
                 justify-content: center;
@@ -49,12 +47,11 @@
             }
 
             .modal-footer {
-                padding: 10px;
+                padding: 15px 20px;
                 background-color: white;
                 display: flex;
                 justify-content: space-between;
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
+                border-top:1px solid #ddd;
 
                 button {
                     background-color: $bg-main;
@@ -62,7 +59,7 @@
                     padding: 5px;
                     width: 70px;
                     color: white;
-                    border-radius: 10px;
+                    border-radius: 5px;
                     cursor: pointer;
                     font-weight: 600;
                 }
