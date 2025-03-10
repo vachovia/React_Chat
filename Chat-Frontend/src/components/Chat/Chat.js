@@ -6,11 +6,15 @@ import "./../../assets/scss/Chat/Chat.scss";
 import { logoutAction } from "./../../redux/slice/auth/actions";
 import { fetchChatsAction } from "./../../redux/slice/chat/actions";
 
+import useSocket from './../Chat/hooks/socketConnect';
+
 const Chat = () => {
   const dispatch = useDispatch();
-  const { error, loading } = useSelector((state) => {
+  const { user, error, loading } = useSelector((state) => {
     return state.auth;
   });
+
+  useSocket(user, dispatch);
 
   useEffect(() => {
     if (error?.error?.name === "TokenExpiredError") {

@@ -31,3 +31,5 @@
 
 // to create dummy seeder file users we need to run command: npx sequelize seed:create --name chats
 // to seed particular seed file we need to run command: npx sequelize db:seed --seed 20250302230657-chats
+
+// installed socket.io and used http package (replaced also app.listen by server.listen)

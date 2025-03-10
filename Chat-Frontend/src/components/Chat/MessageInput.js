@@ -36,6 +36,7 @@ const MessageInput = ({ chat }) => {
     setImage("");
     setMessage("");
 
+    console.log(msg);
     // send message to the server
   };
 

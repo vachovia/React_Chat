@@ -1,4 +1,4 @@
-import { Outlet, NavLink } from "react-router-dom";
+import { Outlet } from "react-router-dom"; // , NavLink
 // import Breadcrumbs from "./Breadcrumbs";
 
 export default function RootLayout() {
