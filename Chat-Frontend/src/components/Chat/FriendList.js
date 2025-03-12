@@ -22,26 +22,37 @@ const FriendList = () => {
         <button>Add</button>
       </div>
       <hr className="app-hr" />
-      <Error error={error} />
-      {loading && (
-        <div className="d-flex justify-content-center align-content-center">
-          <h4 className="text-danger">Loading...</h4>
-        </div>
-      )}
-      <div id="friends-box">
-        {chats && chats.length > 0 ? (
-          chats.map((chat) => {
-            return <Friend key={chat?.id} chat={chat} click={() => openChat(chat)}/>;
-          })
-        ) : (
-          <div
-            id="no-chat"
-            className="d-flex justify-content-center align-content-center"
-          >
-            <h4 className="text-danger">No Friends</h4>
+      {error ? (
+        <Error error={error} />
+      ) : (
+        <>
+          {loading && (
+            <div className="d-flex justify-content-center align-content-center">
+              <h4 className="text-danger">Loading...</h4>
+            </div>
+          )}
+          <div id="friends-box">
+            {chats && chats.length > 0 ? (
+              chats.map((chat) => {
+                return (
+                  <Friend
+                    key={chat?.id}
+                    chat={chat}
+                    click={() => openChat(chat)}
+                  />
+                );
+              })
+            ) : (
+              <div
+                id="no-chat"
+                className="d-flex justify-content-center align-content-center"
+              >
+                <h4 className="text-danger">No Friends</h4>
+              </div>
+            )}
           </div>
-        )}
-      </div>
+        </>
+      )}
     </div>
   );
 };

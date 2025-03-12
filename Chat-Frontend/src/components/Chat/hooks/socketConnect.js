@@ -6,7 +6,9 @@ function useSocket(user, dispatch) {
     const url = "http://localhost:8800";
     const socket = socketIOClient.connect(url);
 
-    socket.emit("join", user);
+    if (user) {
+      socket.emit("join", user);
+    }
 
     socket.on("friends", (friends) => {
       console.log("Friends: ", friends);
@@ -19,6 +21,7 @@ function useSocket(user, dispatch) {
     socket.on("offline", (user) => {
       console.log("Offline: ", user);
     });
+    
   }, [user, dispatch]);
 }
 
